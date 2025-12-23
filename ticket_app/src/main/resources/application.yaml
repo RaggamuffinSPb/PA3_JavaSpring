@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ticket_app
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ticketdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update # пусть hibernate управляет объектами БД, раз ходит под админом и БД создана для приложения
+    show-sql: true # TODO: false после отладки, не спамить в консаль
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true # для красоты
+
+jwt:
+  secret: "1040c945531d41e9c72a39b222c7e3513c5da2b3637657fa663f0319ba355636"  # 256битный ключ с https://jwtsecrets.com/#generator
+  expiration: 86400000  # 24часа
